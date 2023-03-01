@@ -1,36 +1,32 @@
 #include "main.h"
+
 /**
- *cap_string - This is the main function
- *@s: This is the string to be entered
- *Return: void
+ * cap_string - take strings and capitalize words
+ * @a: string to capitalize
+ * Return: capitalized words
  */
-char *cap_string(char *s)
+
+char *cap_string(char *a)
 {
-	int index = 0;
+	int i, x;
+	char *seperators = ",;.!?\"(){} \n\t";
 
-	while (s[index])
+	for (i = 0; *(a + i) != '\0'; i++)
 	{
-		while (!(s[index] >= 'a' && s[index] <= 'z'))
-			index++;
-
-		if (s[index - 1] == ' ' ||
-		    s[index - 1] == '\t' ||
-		    s[index - 1] == '\n' ||
-		    s[index - 1] == ',' ||
-		    s[index - 1] == ';' ||
-		    s[index - 1] == '.' ||
-		    s[index - 1] == '!' ||
-		    s[index - 1] == '?' ||
-		    s[index - 1] == '"' ||
-		    s[index - 1] == '(' ||
-		    s[index - 1] == ')' ||
-		    s[index - 1] == '{' ||
-		    s[index - 1] == '}' ||
-		    index == 0)
-			s[index] -= 32;
-
-		index++;
+		if (*(a + i) >= 'a' && *(a + i) <= 'z')
+			for (x = 0; *(seperators + x) != '\0'; x++)
+			{
+				if (*(a + i - 1) == *(seperators + x))
+				{
+					*(a + i) -= 32;
+					break;
+				}
+				else if (i == 0)
+				{
+					*(a + i) -= 32;
+					break;
+				}
+			}
 	}
-
-	return (s);
+	return (a);
 }
