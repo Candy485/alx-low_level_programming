@@ -1,3 +1,5 @@
+lines (25 sloc)  384 Bytes
+
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -23,5 +25,5 @@ int main(int argc, char *argv[])
 		result = num1 * num2;
 		printf("%d\n", result);
 		return (0);
-	}
+	i}
 }
